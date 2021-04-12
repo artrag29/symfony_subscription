@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News subscription list{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Subscription List</h1>
+        <table>
+            <tr>
+                <th id="name">Name</th>
+                <th id="email">Email</th>
+                <th id="date">Created Date</th>
+                <th id="category">Selected categories</th>
+                <th>Actions</th>
+            </tr>
+            {% for item in list %}
+                <tr>
+                    <td class="name">{{ item.name }}</th>
+                    <td class="email">{{ item.email }}</th>
+                    <td class="date">{{ item.createdAt|date('Y-m-d H:m') }}</th>
+                    <td class="category" style="text-align: center">{{ item.category }}</th>
+                    <td class="actions">
+                        <a href="/subscription/edit/{{ item.id }}">Edit</a>
+                        <a href="/subscription/delete/{{ item.id }}">Delete</a>
+                    </th>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+     {% block javascripts %}
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+         {{ parent() }}
+         {{ encore_entry_script_tags('subscription-list') }}
+         {{ encore_entry_script_tags('jquery.sortElements') }}
+     {% endblock %}
+{% endblock %}

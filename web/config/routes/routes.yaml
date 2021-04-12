@@ -1,0 +1,11 @@
+app_logout:
+  path: /logout
+  methods: GET
+
+app_homepage:
+  path: /home
+  controller: App\Controller\HomePageController::homepage
+
+subscription_list:
+  path: /subscription-list
+  controller: App\Controller\SubscriptionController::list

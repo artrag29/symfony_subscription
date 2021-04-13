@@ -16,7 +16,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Subscription
 {
-
     use TimestampableEntity;
     use SoftDeleteableEntity;
 
@@ -83,5 +82,4 @@ class Subscription
 
         return $this;
     }
-
 }

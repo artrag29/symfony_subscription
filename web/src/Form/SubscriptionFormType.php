@@ -16,15 +16,17 @@ class SubscriptionFormType extends AbstractType
         $builder
             ->add('name')
             ->add('email', EmailType::class)
-            ->add('category', ChoiceType::class, [
+            ->add(
+                'category',
+                ChoiceType::class,
+                [
                 'choices' => [
                     'Media' => 'media',
                     'Politic' => 'politic',
                     'Sport' => 'sport',
                     ]
                 ]
-    );
-
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)

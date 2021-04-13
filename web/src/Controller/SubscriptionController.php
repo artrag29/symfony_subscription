@@ -40,8 +40,6 @@ class SubscriptionController extends AbstractController
                 'Your subscription is saved!'
             );
             return $this->redirectToRoute('subscription');
-
-
         }
 
         return $this->render('subscription/subscription.html.twig', [
@@ -74,7 +72,10 @@ class SubscriptionController extends AbstractController
         $form = $this->createFormBuilder($subscription)
             ->add('name')
             ->add('email', EmailType::class)
-            ->add('category', ChoiceType::class, [
+            ->add(
+                'category',
+                ChoiceType::class,
+                [
                     'choices' => [
                         'Media' => 'media',
                         'Politic' => 'politic',
@@ -96,14 +97,14 @@ class SubscriptionController extends AbstractController
 
         return $this->render('subscription/subscription.html.twig', [
             'form' => $form->createView(),]);
-
     }
 
 
     /**
      * @Route("/subscription/delete/{id}")
      */
-    public function delete(int $id): Response{
+    public function delete(int $id): Response
+    {
         $entityManager = $this->getDoctrine()->getManager();
         $subscription = $entityManager->getRepository(Subscription::class)->find($id);
         if (!$subscription) {
